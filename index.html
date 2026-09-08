@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio Viewport</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: #0f172a;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      color: #1e293b;
+    }
+
+    /* Scrollable Phone Frame */
+    .app-viewport {
+      width: 100%;
+      max-width: 400px;
+      height: 100vh;
+      max-height: 840px;
+      background-color: #f8fafc;
+      overflow-y: auto;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+      border-radius: 32px;
+      padding: 16px;
+      scrollbar-width: none;
+    }
+
+    .app-viewport::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* Card Styling */
+    .section-card {
+      background: #ffffff;
+      padding: 20px 16px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+
+    .section-title {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #0f172a;
+    }
+
+    /* Common Box Elements */
+    .box-dashed {
+      border: 1.5px dashed #94a3b8;
+      background-color: #f1f5f9;
+      color: #475569;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 8px 12px;
+      text-align: center;
+    }
+
+    .hero-header {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+
+    /* Circular Profile Image */
+    .avatar-container {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 0 auto 16px auto;
+      border: 3px solid #e2e8f0;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.08);
+    }
+
+    .avatar-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-title {
+      text-align: center;
+      font-size: 24px;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 16px;
+    }
+
+    .hero-footer {
+      display: flex;
+      gap: 10px;
+    }
+
+    /* Section 2: Profile List */
+    .category-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .category-item {
+      background-color: #f1f5f9;
+      color: #334155;
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .bio-text {
+      font-size: 13px;
+      color: #64748b;
+      line-height: 1.5;
+    }
+
+    .bio-text strong {
+      color: #334155;
+    }
+
+    @media (max-width: 480px) {
+      .app-viewport {
+        max-height: 100vh;
+        border-radius: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <main class="app-viewport">
+
+    <!-- 1. HERO COVER -->
+    <section class="section-card">
+      <div class="box-dashed hero-header">T (Top Header)</div>
+      
+      <div class="avatar-container">
+        <img src="PICTURE PORTFOLIO.png" alt="Profile Photo" class="avatar-image">
+      </div>
+      
+      <h1 class="hero-title">Portfolio</h1>
+      
+      <div class="hero-footer">
+        <div class="box-dashed" style="flex: 1;">T</div>
+        <div class="box-dashed" style="flex: 2;">Social Media</div>
+      </div>
+    </section>
+
+    <!-- 2. PROFILE & ABOUT ME -->
+    <section class="section-card">
+      <div class="category-list">
+        <div class="category-item">• Media Proc.</div>
+        <div class="category-item">• Video Editor</div>
+        <div class="category-item">• Photo Editor</div>
+        <div class="category-item">• Web Developer</div>
+      </div>
+
+      <h2 class="section-title">About Me</h2>
+      <p class="bio-text">
+        Tech enthusiast<br>
+        <strong>BS ECE</strong>
+      </p>
+    </section>
+
+  </main>
+
+</body>
+</html>
