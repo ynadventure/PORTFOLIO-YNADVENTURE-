@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Portfolio Viewport</title>
 
   <!-- Aesthetic Minimalist Font: Plus Jakarta Sans -->
@@ -14,6 +14,14 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
+    /* Prevent root elements from causing horizontal swipe/scroll */
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow-x: hidden;
+      position: relative;
+    }
+
     * {
       box-sizing: border-box;
       margin: 0;
@@ -28,7 +36,6 @@
       align-items: center;
       min-height: 100vh;
       color: #1e293b;
-      overflow: hidden;
     }
 
     /* Fixed Scrollable Phone Frame Viewport */
@@ -42,7 +49,9 @@
       background-size: 300% 300%;
       animation: gradientShift 10s ease infinite;
 
+      /* Vertical scrolling enabled, horizontal scrolling strictly disabled */
       overflow-y: auto;
+      overflow-x: hidden;
       -webkit-overflow-scrolling: touch;
       
       box-shadow: 
@@ -106,14 +115,14 @@
         0 10px 25px -5px rgba(0, 0, 0, 0.05),
         0 0 1px 1px rgba(255, 255, 255, 0.9) inset;
       width: 100%;
-      min-height: 520px; /* Equal default height for all page cards */
+      min-height: 520px;
       flex-shrink: 0;
       text-align: center;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
       justify-content: flex-start;
-      overflow: hidden;
+      overflow: hidden; /* Constrains card elements within width */
       position: relative;
       z-index: 1;
     }
@@ -305,10 +314,9 @@
       padding-left: 20px;
     }
 
-    /* Reduced font size for list items */
     .info-list-container li {
       font-weight: 600;
-      font-size: 13px; /* Reduced from 15px */
+      font-size: 13px;
       color: #1e293b;
       margin-bottom: 8px;
       line-height: 1.4;
@@ -325,15 +333,17 @@
       text-align: left;
     }
 
+    /* Mobile Default Layout */
     @media (max-width: 480px) {
       body {
-        overflow: auto;
+        align-items: flex-start;
       }
       .app-viewport {
         max-height: 100vh;
         height: 100vh;
         border-radius: 0;
         border: none;
+        padding: 14px;
       }
     }
   </style>
