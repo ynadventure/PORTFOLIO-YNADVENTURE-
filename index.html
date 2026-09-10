@@ -2,28 +2,27 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <title>Portfolio Viewport</title>
 
-  <!-- Aesthetic Minimalist Font: Plus Jakarta Sans -->
+  <!-- Aesthetic Minimalist Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
 
-  <!-- Font Awesome Icons for Social Media -->
+  <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
-    /* Strictly disable horizontal space and swipe globally */
+    /* Prevent unwanted outer scrolling on touch devices */
     html, body {
       width: 100%;
-      max-width: 100%;
       height: 100%;
       margin: 0;
       padding: 0;
-      overflow-x: hidden !important;
-      position: relative;
-      touch-action: pan-y; /* Lock touch gestures to vertical only */
+      overflow: hidden;
+      position: fixed;
+      touch-action: none;
     }
 
     * {
@@ -38,24 +37,25 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 100vh;
+      min-height: 100dvh;
       color: #1e293b;
     }
 
-    /* Fixed Scrollable Phone Frame Viewport */
+    /* Scrollable Phone Viewport */
     .app-viewport {
       width: 100%;
       max-width: 400px;
-      height: 840px;
-      max-height: 90vh;
+      height: auto;
+      max-height: 90dvh;
       
       background: linear-gradient(-45deg, #c7d2fe, #e0e7ff, #a5b4fc, #818cf8);
       background-size: 300% 300%;
       animation: gradientShift 10s ease infinite;
 
-      /* Vertical scrolling strictly, zero horizontal scroll */
       overflow-y: auto !important;
       overflow-x: hidden !important;
+      scroll-behavior: smooth;
+      scroll-snap-type: y mandatory;
       -webkit-overflow-scrolling: touch;
       touch-action: pan-y;
       
@@ -65,12 +65,12 @@
       
       border: 3px solid rgba(255, 255, 255, 0.6);
       border-radius: 36px;
-      padding: 18px;
+      padding: 14px;
       scrollbar-width: none;
       position: relative;
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 16px;
     }
 
     @keyframes gradientShift {
@@ -81,10 +81,9 @@
 
     .app-viewport::-webkit-scrollbar {
       display: none;
-      width: 0;
     }
 
-    /* Floating Background Accents constrained inside container */
+    /* Floating Accents */
     .viewport-accent-1 {
       position: absolute;
       top: 0px;
@@ -109,37 +108,36 @@
       pointer-events: none;
     }
 
-    /* Standardized Card Layout for All Pages */
+    /* Fixed Equal Height Card Layout */
     .section-card {
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
       background: rgba(240, 244, 255, 0.94);
       backdrop-filter: blur(12px);
-      padding: 24px 16px;
+      padding: 20px 16px;
       border-radius: 24px;
       border: 1px solid rgba(255, 255, 255, 0.8);
       box-shadow: 
         0 10px 25px -5px rgba(0, 0, 0, 0.05),
         0 0 1px 1px rgba(255, 255, 255, 0.9) inset;
       width: 100%;
-      max-width: 100%;
-      min-height: 520px;
+      height: 580px; /* Matching height with page 2 */
       flex-shrink: 0;
-      text-align: center;
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
-      justify-content: flex-start;
-      overflow-x: hidden !important; /* Prevents card children from pushing out */
+      justify-content: space-between;
       position: relative;
       z-index: 1;
+      overflow: hidden;
     }
 
-    /* --- PAGE 1 CONTENT --- */
+    /* --- PAGE 1 DESIGN --- */
     .avatar-container {
-      width: 130px;
-      height: 130px;
+      width: 160px;
+      height: 160px;
       border-radius: 50%;
       overflow: hidden;
-      margin: 4px auto 12px auto;
+      margin: 0 auto;
       border: 4px solid #ffffff;
       outline: 2px dashed #818cf8;
       outline-offset: 4px;
@@ -147,12 +145,6 @@
         0 8px 16px -2px rgba(46, 28, 199, 0.12),
         0 0 15px rgba(129, 140, 248, 0.25);
       align-self: center;
-      transition: transform 0.3s ease, outline-color 0.3s ease;
-    }
-
-    .avatar-container:hover {
-      transform: scale(1.03);
-      outline-color: #2e1cc7;
     }
 
     .avatar-image {
@@ -161,12 +153,20 @@
       object-fit: cover;
     }
 
+    .banner-row {
+      display: grid;
+      grid-template-columns: auto auto 1fr;
+      align-items: center;
+      width: 100%;
+      margin-top: 14px; /* Added more space above banner */
+      margin-bottom: 8px;
+    }
+
     .title-shape-container {
       background-color: #2e1cc7;
-      width: calc(100% + 32px); /* Full bleed to card edges without breaking layout */
+      width: fit-content;
+      padding: 6px 28px 6px 24px;
       margin-left: -16px;
-      margin-top: 10px;
-      padding: 6px 0 6px 24px;
       position: relative;
       display: flex;
       justify-content: flex-start;
@@ -176,10 +176,10 @@
     }
 
     .hero-title {
-      font-size: 22px;
+      font-size: 19px;
       font-weight: 600;
       color: #ffffff;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       text-shadow: 
         -1.5px -1.5px 0 #000,
@@ -188,23 +188,34 @@
         1.5px 1.5px 0 #000;
     }
 
+    /* Minimalist Cool Handle Font */
+    .banner-handle {
+      font-family: 'Instrument Serif', serif;
+      font-size: 21px;
+      font-weight: 700;
+      font-style: italic;
+      color: #1e293b;
+      letter-spacing: 0.03em;
+      margin-left: 18px;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+      white-space: nowrap;
+    }
+
     .section-subtitle {
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 800;
       color: #475569;
-      margin-top: 16px;
-      padding-left: 0px;
       text-transform: uppercase;
       letter-spacing: 0.1em;
+      margin: 0;
     }
 
     .social-list-container {
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 8px;
       width: 100%;
-      margin-top: 10px;
-      padding-left: 0px;
+      margin-bottom: 15px;
     }
 
     .social-item {
@@ -217,11 +228,6 @@
       letter-spacing: 0.03em;
       cursor: default;
       user-select: none;
-      transition: transform 0.2s ease;
-    }
-
-    .social-item:hover {
-      transform: translateX(4px);
     }
 
     .social-item i {
@@ -242,8 +248,7 @@
     .colon { text-align: left; font-weight: 600; color: #475569; }
 
     .quote-box {
-      margin-top: 16px;
-      padding: 12px 14px;
+      padding: 10px 12px;
       background-color: #e0e7ff;
       border-left: 3px solid #2e1cc7;
       border-radius: 0 10px 10px 0;
@@ -254,92 +259,200 @@
     }
 
     .quote-text {
-      font-size: 11.5px;
+      font-size: 11px;
       font-style: italic;
       font-weight: 400;
-      line-height: 1.5;
+      line-height: 1.45;
       color: #334155;
       letter-spacing: 0.01em;
     }
 
-    /* --- PAGE 2 CONTENT --- */
-    .logo-banner-container {
-      position: relative;
-      width: calc(100% + 32px);
-      margin-left: -16px;
-      margin-top: 10px;
-      margin-bottom: 24px;
-      height: 90px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .banner-stripe {
-      position: absolute;
+    /* Page Link Nav Button */
+    .page-nav-btn {
       width: 100%;
-      height: 48px;
-      background-color: #2e1cc7;
-      border-top: 2px solid #000000;
-      border-bottom: 2px solid #000000;
-    }
-
-    .logo-circle {
-      position: relative;
-      z-index: 2;
-      width: 90px;
-      height: 90px;
-      border-radius: 50%;
-      background-color: #f0f4ff;
-      border: 3px solid #000000;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+      gap: 8px;
+      background: #2e1cc7;
+      color: #ffffff;
+      padding: 11px 16px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      box-shadow: 0 4px 12px rgba(46, 28, 199, 0.25);
+      transition: background 0.2s ease, transform 0.2s ease;
+      flex-shrink: 0;
     }
 
-    .logo-text {
+    .page-nav-btn:hover {
+      background: #22149b;
+      transform: translateY(-1px);
+    }
+
+    .page-nav-btn-secondary {
+      background: #ffffff;
+      color: #2e1cc7;
+      border: 1px solid rgba(46, 28, 199, 0.25);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    }
+
+    /* --- PAGE 2 REFINED STYLING (LOCKED) --- */
+    .p2-header {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .p2-title {
+      font-size: 19px;
       font-weight: 800;
-      font-size: 18px;
-      letter-spacing: 0.08em;
       color: #0f172a;
+      letter-spacing: -0.02em;
+    }
+
+    .p2-badge {
+      font-size: 9px;
+      font-weight: 800;
+      color: #0f172a;
+      background: rgba(15, 23, 42, 0.08);
+      padding: 4px 8px;
+      border-radius: 10px;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
     }
 
-    .info-list-container {
+    .p2-section-group {
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 6px;
       width: 100%;
-      padding-left: 8px;
-      text-align: left;
     }
 
-    .info-list-container ul {
-      list-style-type: disc;
-      padding-left: 20px;
-    }
-
-    .info-list-container li {
-      font-weight: 600;
-      font-size: 13px;
-      color: #1e293b;
-      margin-bottom: 8px;
-      line-height: 1.4;
-    }
-
-    .about-heading {
-      font-size: 14px;
+    .p2-label {
+      font-size: 10px;
       font-weight: 800;
-      color: #475569;
-      margin-top: 16px;
-      margin-bottom: 10px;
+      color: #0f172a;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
-      text-align: left;
+      letter-spacing: 0.08em;
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
 
-    /* Mobile view strict constraints */
+    .p2-label i {
+      color: #0f172a;
+      font-size: 10px;
+    }
+
+    /* Discipline Rows */
+    .discipline-row {
+      background: #ffffff;
+      border: 1px solid rgba(226, 232, 240, 0.8);
+      border-radius: 12px;
+      padding: 8px 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.02);
+    }
+
+    .discipline-icon {
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      background: rgba(15, 23, 42, 0.06);
+      color: #0f172a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      flex-shrink: 0;
+    }
+
+    .discipline-content {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+
+    .discipline-title {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    .discipline-desc {
+      font-size: 9.5px;
+      font-weight: 500;
+      color: #334155;
+      line-height: 1.3;
+    }
+
+    /* Structured Chips Container */
+    .chip-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      width: 100%;
+    }
+
+    .item-chip {
+      background: #ffffff;
+      border: 1px solid rgba(226, 232, 240, 0.9);
+      padding: 6px 10px;
+      border-radius: 8px;
+      font-size: 10.5px;
+      font-weight: 600;
+      color: #0f172a;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+      flex: 1 1 calc(50% - 6px);
+      min-width: 130px;
+      white-space: nowrap;
+    }
+
+    .item-chip i {
+      font-size: 11px;
+      color: #0f172a;
+      width: 12px;
+      text-align: center;
+    }
+
+    /* Status Indicator Banner */
+    .status-banner {
+      width: 100%;
+      background: #ffffff;
+      border: 1px solid rgba(226, 232, 240, 0.9);
+      border-radius: 10px;
+      padding: 8px 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background-color: #10b981;
+      box-shadow: 0 0 6px #10b981;
+      flex-shrink: 0;
+    }
+
+    .status-text {
+      font-size: 10px;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    /* FULLSCREEN MOBILE ADAPTATION */
     @media (max-width: 480px) {
       body {
         align-items: flex-start;
@@ -347,11 +460,17 @@
       .app-viewport {
         width: 100vw;
         max-width: 100vw;
-        max-height: 100vh;
-        height: 100vh;
+        height: 100dvh;
+        max-height: 100dvh;
         border-radius: 0;
         border: none;
-        padding: 12px;
+        padding: 10px;
+        gap: 10px;
+      }
+      .section-card {
+        height: calc(100dvh - 20px);
+        border-radius: 18px;
+        padding: 16px 14px;
       }
     }
   </style>
@@ -360,18 +479,21 @@
 
   <main class="app-viewport">
     
-    <!-- Background Accents Inside Viewport -->
+    <!-- Background Accents -->
     <div class="viewport-accent-1"></div>
     <div class="viewport-accent-2"></div>
 
     <!-- PAGE 1: PORTFOLIO -->
-    <section class="section-card">
+    <section class="section-card" id="portfolio" style="justify-content: flex-start; gap: 12px;">
       <div class="avatar-container">
         <img src="PICTURE PORTFOLIO.png" alt="Profile Photo" class="avatar-image">
       </div>
       
-      <div class="title-shape-container">
-        <h1 class="hero-title">Portfolio</h1>
+      <div class="banner-row">
+        <div class="title-shape-container">
+          <h1 class="hero-title">Portfolio</h1>
+        </div>
+        <span class="banner-handle">@Ynadventure</span>
       </div>
 
       <p class="section-subtitle">Social Media</p>
@@ -407,31 +529,88 @@
           "The lens captures story, vision powers creation, and code brings logic to life—I craft experiences across cinema, photography, circuitry, and digital space, driven by a relentless passion to direct, design, and build the extraordinary."
         </p>
       </div>
+
+      <!-- Navigation Button -->
+      <a href="#overview" class="page-nav-btn" style="margin-top: auto;">
+        <span>Explore Overview & Skills</span>
+        <i class="fa-solid fa-arrow-down"></i>
+      </a>
     </section>
 
-    <!-- PAGE 2: LOGO & ABOUT ME -->
-    <section class="section-card">
-      <div class="logo-banner-container">
-        <div class="banner-stripe"></div>
-        <div class="logo-circle">
-          <span class="logo-text">LOGO</span>
+    <!-- PAGE 2: OVERVIEW & EXPERTISE -->
+    <section class="section-card" id="overview">
+      
+      <!-- Top Header -->
+      <div class="p2-header">
+        <h2 class="p2-title">Overview</h2>
+        <span class="p2-badge">Skills & Experience</span>
+      </div>
+
+      <!-- Core Focus -->
+      <div class="p2-section-group">
+        <div class="p2-label">
+          <i class="fa-solid fa-clapperboard"></i>
+          <span>Core Focus</span>
+        </div>
+
+        <div class="discipline-row">
+          <div class="discipline-icon"><i class="fa-solid fa-film"></i></div>
+          <div class="discipline-content">
+            <span class="discipline-title">Multimedia and Cinema</span>
+            <span class="discipline-desc">Assistant Director, Photography, and Video Editing</span>
+          </div>
+        </div>
+
+        <div class="discipline-row">
+          <div class="discipline-icon"><i class="fa-solid fa-laptop-code"></i></div>
+          <div class="discipline-content">
+            <span class="discipline-title">Technology and Development</span>
+            <span class="discipline-desc">Electronics Engineering, Web and GUI Development</span>
+          </div>
         </div>
       </div>
 
-      <div class="info-list-container">
-        <ul>
-          <li>Media Director</li>
-          <li>Video and Photo Editor</li>
-          <li>Web Developer</li>
-        </ul>
+      <!-- Creative Software -->
+      <div class="p2-section-group">
+        <div class="p2-label">
+          <i class="fa-solid fa-layer-group"></i>
+          <span>Creative Software</span>
+        </div>
 
-        <p class="about-heading">ABOUT ME</p>
-
-        <ul>
-          <li>Currently Studying - BS Electronics Engineer.</li>
-          <li>Technology Enthusiast</li>
-        </ul>
+        <div class="chip-container">
+          <div class="item-chip"><i class="fa-solid fa-pen-nib"></i> Adobe Premiere Pro</div>
+          <div class="item-chip"><i class="fa-solid fa-sliders"></i> Adobe Lightroom</div>
+          <div class="item-chip"><i class="fa-solid fa-image"></i> Adobe Photoshop</div>
+        </div>
       </div>
+
+      <!-- Programming & Tech -->
+      <div class="p2-section-group">
+        <div class="p2-label">
+          <i class="fa-solid fa-code"></i>
+          <span>Programming & Tech</span>
+        </div>
+
+        <div class="chip-container">
+          <div class="item-chip"><i class="fa-brands fa-python"></i> Python</div>
+          <div class="item-chip"><i class="fa-brands fa-html5"></i> HTML5</div>
+          <div class="item-chip"><i class="fa-brands fa-css3-alt"></i> CSS3</div>
+          <div class="item-chip"><i class="fa-solid fa-bolt"></i> Circuitry & Hardware</div>
+        </div>
+      </div>
+
+      <!-- Live Status Banner -->
+      <div class="status-banner">
+        <span class="status-dot"></span>
+        <span class="status-text">Available for Projects and Collaboration</span>
+      </div>
+
+      <!-- Back Button -->
+      <a href="#portfolio" class="page-nav-btn page-nav-btn-secondary">
+        <i class="fa-solid fa-arrow-up"></i>
+        <span>Back to Top Portfolio</span>
+      </a>
+
     </section>
 
   </main>
