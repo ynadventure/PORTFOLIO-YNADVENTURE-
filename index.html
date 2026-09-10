@@ -8,7 +8,7 @@
   <!-- Aesthetic Minimalist Font: Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500&display=swap" rel="stylesheet">
 
   <!-- Font Awesome Icons for Social Media -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -22,7 +22,7 @@
 
     body {
       font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-      background-color: #0f172a;
+      background-color: #0f172a; /* Solid dark slate background */
       display: flex;
       justify-content: center;
       align-items: center;
@@ -30,18 +30,35 @@
       color: #1e293b;
     }
 
-    /* Scrollable Phone Frame */
+    /* Enhanced Scrollable Phone Frame */
     .app-viewport {
       width: 100%;
       max-width: 400px;
       height: 100vh;
       max-height: 840px;
-      background-color: #e0e7ff;
+      
+      /* Vibrant animated gradient background */
+      background: linear-gradient(-45deg, #c7d2fe, #e0e7ff, #a5b4fc, #818cf8);
+      background-size: 300% 300%;
+      animation: gradientShift 10s ease infinite;
+
       overflow-y: auto;
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-      border-radius: 32px;
-      padding: 16px;
+      box-shadow: 
+        0 25px 50px -12px rgba(0, 0, 0, 0.6),
+        0 0 35px rgba(99, 102, 241, 0.3);
+      
+      /* Stylish glassmorphic border outline */
+      border: 3px solid rgba(255, 255, 255, 0.6);
+      border-radius: 36px;
+      padding: 18px;
       scrollbar-width: none;
+      position: relative;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     .app-viewport::-webkit-scrollbar {
@@ -49,13 +66,41 @@
       width: 0;
     }
 
+    /* Floating Decorative Micro-Glow Accents Inside Viewport */
+    .viewport-accent-1 {
+      position: absolute;
+      top: -30px;
+      right: -30px;
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background: rgba(46, 28, 199, 0.25);
+      filter: blur(30px);
+      pointer-events: none;
+    }
+
+    .viewport-accent-2 {
+      position: absolute;
+      bottom: 20px;
+      left: -20px;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: rgba(129, 140, 248, 0.35);
+      filter: blur(25px);
+      pointer-events: none;
+    }
+
     /* Extended Front Box (Card) - Light Matching Blue Background */
     .section-card {
-      background: #f0f4ff;
+      background: rgba(240, 244, 255, 0.94);
+      backdrop-filter: blur(12px);
       padding: 24px 16px;
-      border-radius: 20px;
-      border: 1px solid #c7d2fe;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      border-radius: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      box-shadow: 
+        0 10px 25px -5px rgba(0, 0, 0, 0.05),
+        0 0 1px 1px rgba(255, 255, 255, 0.9) inset;
       width: 100%;
       min-height: 780px;
       text-align: center;
@@ -64,18 +109,30 @@
       align-items: flex-start;
       justify-content: flex-start;
       overflow: hidden;
+      position: relative;
+      z-index: 1;
     }
 
-    /* Circular Profile Image */
+    /* Circular Profile Image with Outer Accent Border Detail */
     .avatar-container {
       width: 140px;
       height: 140px;
       border-radius: 50%;
       overflow: hidden;
       margin: 20px auto 16px auto;
-      border: 3px solid #ffffff;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.08);
+      border: 4px solid #ffffff;
+      outline: 2px dashed #818cf8;
+      outline-offset: 4px;
+      box-shadow: 
+        0 8px 16px -2px rgba(46, 28, 199, 0.12),
+        0 0 15px rgba(129, 140, 248, 0.25);
       align-self: center;
+      transition: transform 0.3s ease, outline-color 0.3s ease;
+    }
+
+    .avatar-container:hover {
+      transform: scale(1.03);
+      outline-color: #2e1cc7;
     }
 
     .avatar-image {
@@ -96,6 +153,7 @@
       justify-content: flex-start;
       align-items: center;
       clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
+      box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.15);
     }
 
     /* Minimalist Aesthetic Heading */
@@ -114,11 +172,11 @@
         1.5px 1.5px 0 #000;
     }
 
-    /* Section Subtitle with distinct Slate Grey color (not matching blue banner) */
+    /* Section Subtitle with distinct Slate Grey color */
     .section-subtitle {
       font-size: 14px;
       font-weight: 800;
-      color: #475569; /* Slate grey color */
+      color: #475569;
       margin-top: 24px;
       padding-left: 0px;
       text-transform: uppercase;
@@ -146,6 +204,11 @@
       letter-spacing: 0.03em;
       cursor: default;
       user-select: none;
+      transition: transform 0.2s ease;
+    }
+
+    .social-item:hover {
+      transform: translateX(4px);
     }
 
     .social-item i {
@@ -179,14 +242,37 @@
       color: #475569;
     }
 
+    /* Aligned Minimalist Quote Box Styling */
+    .quote-box {
+      margin-top: 24px;
+      padding: 14px 16px;
+      background-color: #e0e7ff;
+      border-left: 3px solid #2e1cc7;
+      border-radius: 0 10px 10px 0;
+      text-align: left;
+      width: 100%;
+      box-sizing: border-box;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+    }
+
+    .quote-text {
+      font-size: 12px;
+      font-style: italic;
+      font-weight: 400;
+      line-height: 1.6;
+      color: #334155;
+      letter-spacing: 0.01em;
+    }
+
     @media (max-width: 480px) {
       .app-viewport {
         max-height: 100vh;
         border-radius: 0;
+        border: none;
       }
       
       .section-card {
-        min-height: calc(100vh - 32px);
+        min-height: calc(100vh - 36px);
       }
     }
   </style>
@@ -194,6 +280,10 @@
 <body>
 
   <main class="app-viewport">
+    
+    <!-- Background Accents Inside Viewport -->
+    <div class="viewport-accent-1"></div>
+    <div class="viewport-accent-2"></div>
 
     <section class="section-card">
       <div class="avatar-container">
@@ -226,6 +316,13 @@
           <span>TikTok</span>
           <span class="colon">:</span>
         </div>
+      </div>
+
+      <!-- Quote Container Under Social Media -->
+      <div class="quote-box">
+        <p class="quote-text">
+          "The lens captures story, vision powers creation, and code brings logic to life—I craft experiences across cinema, photography, circuitry, and digital space, driven by a relentless passion to direct, design, and build the extraordinary."
+        </p>
       </div>
       
     </section>
