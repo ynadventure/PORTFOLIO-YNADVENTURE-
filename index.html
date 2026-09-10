@@ -133,8 +133,8 @@
 
     /* --- PAGE 1 DESIGN --- */
     .avatar-container {
-      width: 160px;
-      height: 160px;
+      width: 120px;
+      height: 120px;
       border-radius: 50%;
       overflow: hidden;
       margin: 0 auto;
@@ -154,18 +154,19 @@
     }
 
     .banner-row {
-      display: grid;
-      grid-template-columns: auto auto 1fr;
+      display: flex;
       align-items: center;
+      justify-content: space-between;
       width: 100%;
-      margin-top: 14px; /* Added more space above banner */
-      margin-bottom: 8px;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      padding-right: 4px;
     }
 
     .title-shape-container {
       background-color: #2e1cc7;
       width: fit-content;
-      padding: 6px 28px 6px 24px;
+      padding: 6px 24px 6px 16px;
       margin-left: -16px;
       position: relative;
       display: flex;
@@ -176,10 +177,10 @@
     }
 
     .hero-title {
-      font-size: 19px;
+      font-size: 17px;
       font-weight: 600;
       color: #ffffff;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
       text-shadow: 
         -1.5px -1.5px 0 #000,
@@ -191,12 +192,11 @@
     /* Minimalist Cool Handle Font */
     .banner-handle {
       font-family: 'Instrument Serif', serif;
-      font-size: 21px;
+      font-size: 19px;
       font-weight: 700;
       font-style: italic;
       color: #1e293b;
-      letter-spacing: 0.03em;
-      margin-left: 18px;
+      letter-spacing: 0.02em;
       text-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
       white-space: nowrap;
     }
@@ -537,7 +537,7 @@
       </a>
     </section>
 
-    <!-- PAGE 2: OVERVIEW & EXPERTISE -->
+    <!-- PAGE 2: OVERVIEW & EXPERTISE (LOCKED) -->
     <section class="section-card" id="overview">
       
       <!-- Top Header -->
