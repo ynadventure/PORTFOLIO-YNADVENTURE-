@@ -8,7 +8,7 @@
   <!-- Aesthetic Minimalist Font: Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
 
   <!-- Font Awesome Icons for Social Media -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -90,7 +90,7 @@
       width: 85%;
       margin-left: -16px;
       margin-top: 20px;
-      padding: 6px 0 6px 32px; /* Reduced top and bottom padding to 6px */
+      padding: 6px 0 6px 32px;
       position: relative;
       display: flex;
       justify-content: flex-start;
@@ -114,30 +114,42 @@
         1.5px 1.5px 0 #000;
     }
 
-    /* Vertical Social List Container */
+    /* Section Subtitle with distinct Slate Grey color (not matching blue banner) */
+    .section-subtitle {
+      font-size: 14px;
+      font-weight: 800;
+      color: #475569; /* Slate grey color */
+      margin-top: 24px;
+      padding-left: 0px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    /* Left-aligned Vertical Social List Container */
     .social-list-container {
       display: flex;
       flex-direction: column;
       gap: 12px;
       width: 100%;
-      margin-top: 20px;
-      padding-left: 4px;
+      margin-top: 12px;
+      padding-left: 0px;
     }
 
-    /* Fixed grid column width for perfectly aligned colons */
+    /* Minimalist Grid Column for Social Items */
     .social-item {
       display: grid;
       grid-template-columns: 24px 85px 12px 1fr;
       align-items: center;
-      color: #0f172a;
+      color: #1e293b;
       font-weight: 600;
       font-size: 13px;
+      letter-spacing: 0.03em;
       cursor: default;
       user-select: none;
     }
 
     .social-item i {
-      font-size: 16px;
+      font-size: 15px;
       text-align: left;
     }
 
@@ -164,6 +176,7 @@
     .colon {
       text-align: left;
       font-weight: 600;
+      color: #475569;
     }
 
     @media (max-width: 480px) {
@@ -190,6 +203,9 @@
       <div class="title-shape-container">
         <h1 class="hero-title">Portfolio</h1>
       </div>
+
+      <!-- Left-aligned Section Label -->
+      <p class="section-subtitle">Social Media</p>
 
       <!-- Left-aligned Social Media List -->
       <div class="social-list-container">
