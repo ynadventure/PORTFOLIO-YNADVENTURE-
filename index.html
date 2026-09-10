@@ -22,37 +22,41 @@
 
     body {
       font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-      background-color: #0f172a; /* Solid dark slate background */
+      background-color: #0f172a;
       display: flex;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
       color: #1e293b;
+      overflow: hidden;
     }
 
-    /* Enhanced Scrollable Phone Frame */
+    /* Fixed Scrollable Phone Frame Viewport */
     .app-viewport {
       width: 100%;
       max-width: 400px;
-      height: 100vh;
-      max-height: 840px;
+      height: 840px;
+      max-height: 90vh;
       
-      /* Vibrant animated gradient background */
       background: linear-gradient(-45deg, #c7d2fe, #e0e7ff, #a5b4fc, #818cf8);
       background-size: 300% 300%;
       animation: gradientShift 10s ease infinite;
 
       overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      
       box-shadow: 
         0 25px 50px -12px rgba(0, 0, 0, 0.6),
         0 0 35px rgba(99, 102, 241, 0.3);
       
-      /* Stylish glassmorphic border outline */
       border: 3px solid rgba(255, 255, 255, 0.6);
       border-radius: 36px;
       padding: 18px;
       scrollbar-width: none;
       position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
     }
 
     @keyframes gradientShift {
@@ -66,7 +70,7 @@
       width: 0;
     }
 
-    /* Floating Decorative Micro-Glow Accents Inside Viewport */
+    /* Floating Background Accents */
     .viewport-accent-1 {
       position: absolute;
       top: -30px;
@@ -91,7 +95,7 @@
       pointer-events: none;
     }
 
-    /* Extended Front Box (Card) - Light Matching Blue Background */
+    /* Standardized Card Layout for All Pages */
     .section-card {
       background: rgba(240, 244, 255, 0.94);
       backdrop-filter: blur(12px);
@@ -102,7 +106,8 @@
         0 10px 25px -5px rgba(0, 0, 0, 0.05),
         0 0 1px 1px rgba(255, 255, 255, 0.9) inset;
       width: 100%;
-      min-height: 780px;
+      min-height: 520px; /* Equal default height for all page cards */
+      flex-shrink: 0;
       text-align: center;
       display: flex;
       flex-direction: column;
@@ -113,13 +118,13 @@
       z-index: 1;
     }
 
-    /* Circular Profile Image with Outer Accent Border Detail */
+    /* --- PAGE 1 CONTENT --- */
     .avatar-container {
-      width: 140px;
-      height: 140px;
+      width: 130px;
+      height: 130px;
       border-radius: 50%;
       overflow: hidden;
-      margin: 20px auto 16px auto;
+      margin: 4px auto 12px auto;
       border: 4px solid #ffffff;
       outline: 2px dashed #818cf8;
       outline-offset: 4px;
@@ -141,12 +146,11 @@
       object-fit: cover;
     }
 
-    /* Banner container with reduced top and bottom height */
     .title-shape-container {
       background-color: #2e1cc7;
       width: 85%;
       margin-left: -16px;
-      margin-top: 20px;
+      margin-top: 10px;
       padding: 6px 0 6px 32px;
       position: relative;
       display: flex;
@@ -156,15 +160,12 @@
       box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.15);
     }
 
-    /* Minimalist Aesthetic Heading */
     .hero-title {
-      font-size: 24px;
+      font-size: 22px;
       font-weight: 600;
       color: #ffffff;
       letter-spacing: 0.15em;
       text-transform: uppercase;
-      
-      /* Black outline effect */
       text-shadow: 
         -1.5px -1.5px 0 #000,
         1.5px -1.5px 0 #000,
@@ -172,28 +173,25 @@
         1.5px 1.5px 0 #000;
     }
 
-    /* Section Subtitle with distinct Slate Grey color */
     .section-subtitle {
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 800;
       color: #475569;
-      margin-top: 24px;
+      margin-top: 16px;
       padding-left: 0px;
       text-transform: uppercase;
       letter-spacing: 0.1em;
     }
 
-    /* Left-aligned Vertical Social List Container */
     .social-list-container {
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 10px;
       width: 100%;
-      margin-top: 12px;
+      margin-top: 10px;
       padding-left: 0px;
     }
 
-    /* Minimalist Grid Column for Social Items */
     .social-item {
       display: grid;
       grid-template-columns: 24px 85px 12px 1fr;
@@ -216,36 +214,21 @@
       text-align: left;
     }
 
-    /* Original Brand Colors */
-    .fa-facebook-f {
-      color: #1877f2;
-    }
-
+    .fa-facebook-f { color: #1877f2; }
     .fa-instagram {
-      background: -webkit-linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
       background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
+    .fa-tiktok { color: #000000; }
+    .fa-whatsapp { color: #25d366; }
 
-    .fa-tiktok {
-      color: #000000;
-    }
+    .social-item span { text-align: left; }
+    .colon { text-align: left; font-weight: 600; color: #475569; }
 
-    .social-item span {
-      text-align: left;
-    }
-
-    .colon {
-      text-align: left;
-      font-weight: 600;
-      color: #475569;
-    }
-
-    /* Aligned Minimalist Quote Box Styling */
     .quote-box {
-      margin-top: 24px;
-      padding: 14px 16px;
+      margin-top: 16px;
+      padding: 12px 14px;
       background-color: #e0e7ff;
       border-left: 3px solid #2e1cc7;
       border-radius: 0 10px 10px 0;
@@ -256,23 +239,101 @@
     }
 
     .quote-text {
-      font-size: 12px;
+      font-size: 11.5px;
       font-style: italic;
       font-weight: 400;
-      line-height: 1.6;
+      line-height: 1.5;
       color: #334155;
       letter-spacing: 0.01em;
     }
 
+    /* --- PAGE 2 CONTENT --- */
+    .logo-banner-container {
+      position: relative;
+      width: calc(100% + 32px);
+      margin-left: -16px;
+      margin-top: 10px;
+      margin-bottom: 24px;
+      height: 90px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .banner-stripe {
+      position: absolute;
+      width: 100%;
+      height: 48px;
+      background-color: #2e1cc7;
+      border-top: 2px solid #000000;
+      border-bottom: 2px solid #000000;
+    }
+
+    .logo-circle {
+      position: relative;
+      z-index: 2;
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background-color: #f0f4ff;
+      border: 3px solid #000000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .logo-text {
+      font-weight: 800;
+      font-size: 18px;
+      letter-spacing: 0.08em;
+      color: #0f172a;
+      text-transform: uppercase;
+    }
+
+    .info-list-container {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+      padding-left: 8px;
+      text-align: left;
+    }
+
+    .info-list-container ul {
+      list-style-type: disc;
+      padding-left: 20px;
+    }
+
+    /* Reduced font size for list items */
+    .info-list-container li {
+      font-weight: 600;
+      font-size: 13px; /* Reduced from 15px */
+      color: #1e293b;
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+
+    .about-heading {
+      font-size: 14px;
+      font-weight: 800;
+      color: #475569;
+      margin-top: 16px;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      text-align: left;
+    }
+
     @media (max-width: 480px) {
+      body {
+        overflow: auto;
+      }
       .app-viewport {
         max-height: 100vh;
+        height: 100vh;
         border-radius: 0;
         border: none;
-      }
-      
-      .section-card {
-        min-height: calc(100vh - 36px);
       }
     }
   </style>
@@ -285,6 +346,7 @@
     <div class="viewport-accent-1"></div>
     <div class="viewport-accent-2"></div>
 
+    <!-- PAGE 1: PORTFOLIO -->
     <section class="section-card">
       <div class="avatar-container">
         <img src="PICTURE PORTFOLIO.png" alt="Profile Photo" class="avatar-image">
@@ -294,10 +356,8 @@
         <h1 class="hero-title">Portfolio</h1>
       </div>
 
-      <!-- Left-aligned Section Label -->
       <p class="section-subtitle">Social Media</p>
 
-      <!-- Left-aligned Social Media List -->
       <div class="social-list-container">
         <div class="social-item">
           <i class="fa-brands fa-facebook-f"></i>
@@ -316,15 +376,44 @@
           <span>TikTok</span>
           <span class="colon">:</span>
         </div>
+
+        <div class="social-item">
+          <i class="fa-brands fa-whatsapp"></i>
+          <span>WhatsApp</span>
+          <span class="colon">:</span>
+        </div>
       </div>
 
-      <!-- Quote Container Under Social Media -->
       <div class="quote-box">
         <p class="quote-text">
           "The lens captures story, vision powers creation, and code brings logic to life—I craft experiences across cinema, photography, circuitry, and digital space, driven by a relentless passion to direct, design, and build the extraordinary."
         </p>
       </div>
-      
+    </section>
+
+    <!-- PAGE 2: LOGO & ABOUT ME -->
+    <section class="section-card">
+      <div class="logo-banner-container">
+        <div class="banner-stripe"></div>
+        <div class="logo-circle">
+          <span class="logo-text">LOGO</span>
+        </div>
+      </div>
+
+      <div class="info-list-container">
+        <ul>
+          <li>Media Director</li>
+          <li>Video and Photo Editor</li>
+          <li>Web Developer</li>
+        </ul>
+
+        <p class="about-heading">ABOUT ME</p>
+
+        <ul>
+          <li>Currently Studying - BS Electronics Engineer.</li>
+          <li>Technology Enthusiast</li>
+        </ul>
+      </div>
     </section>
 
   </main>
